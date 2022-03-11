@@ -9,12 +9,18 @@ public class Main {
     Scanner scanner = new Scanner(System.in);
     boolean done = false;
     boolean finish = false;
+    String input = "";
 
     while(true){
       while(true){
       try{
-        System.out.print("please input keyword: ");
-        String input = scanner.nextLine();
+        System.out.print("please input keyword:");
+        try{
+          input = scanner.nextLine();
+        }catch(NoSuchElementException e){
+          System.out.println("error... retrying");
+          input = scanner.nextLine();
+        }
         String[] inputs = input.split(" ");
 
         for(String keyWord : inputs){
@@ -36,16 +42,24 @@ public class Main {
           if(done || finish)
           break;
         }
-        if(done || finish)
+        if(done){
           System.out.println("operation done (-:");
+          input = "";
+        }
+        if (finish)
+          System.out.println("operation closed");
+          break;
+        }
+        catch (NoSuchElementException ex){
+          System.out.println("error, input failed \nplease restart program");
+          System.out.println(ex);
           done = false;
-        break;
+          finish = true;
+          break;
+        }
       }
-      catch (NoSuchElementException ex){
-        System.out.println("no keywords found");
-        break;
-      }
+      if(finish)
+      break;
     }
-  }
   }
 }
