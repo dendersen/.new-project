@@ -4,7 +4,6 @@ import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class Main {
-
   public static void main (String[] args) {
     Scanner scanner = new Scanner(System.in);
     boolean done = false;
@@ -30,7 +29,12 @@ public class Main {
             Debt.main(args);
             done = true;
             break;
-            
+
+            case "chess":
+            System.out.println("");
+            Chess.main(args);
+            done = true;
+            break;
             case "stop":
             System.out.println("stopping program )-:");
             finish = true;
