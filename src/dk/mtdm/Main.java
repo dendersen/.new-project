@@ -64,6 +64,11 @@ public class Main {
       }
       if(finish)
       break;
+      try{
+        scanner.nextLine();
+      } catch (Exception e){
+        System.out.println("error prevented");
+      }
     }
   }
 }
