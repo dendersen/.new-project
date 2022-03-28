@@ -169,27 +169,32 @@ public class Chess {
   private static String boardPrintMove(byte moving, byte position, boolean color) {
     String file = "";
     byte moveable[] = new byte[30];
+    
+    for(byte i = 0; i < 30; i++)
+    moveable [i] = -1;
+    
     switch(moving){
       case 1:
-      byte length = 0;
-      if (position + 8 == 0){
-        moveable[length] = (byte) (position + 8);
-        length++;
-        if (position > 7 && position < 16 && color && position+16 == 0 ){
-          moveable[length] = (byte) (position+16);
+        byte length = 0;
+        if (position + 8 == 0){
+          moveable[length] = (byte) (position + 8);
+          length++;
+          if (position > 7 && position < 16 && color && position+16 == 0 ){
+            moveable[length] = (byte) (position+16);
+            length++;
+          }
+        }
+        if (position+7 > 8){
+          moveable[length] = (byte) (position+7);
           length++;
         }
-      }
-      if (position+7 > 8){
-        moveable[length] = (byte) (position+7);
-        length++;
-      }
-      if (position+9 > 8){
-        moveable[length] = (byte) (position+9);
-        length++;
-      }
+        if (position+9 > 8){
+          moveable[length] = (byte) (position+9);
+          length++;
+        }
       break;
       case 2:
+
       break;
       case 3:
       break;
@@ -218,6 +223,8 @@ public class Chess {
 
   public static boolean checkArray(byte array[], byte toCheck){
     for(int i = 0; i < array.length; i++){
+      System.out.println("i = " + i);
+      System.out.println(array[i]);
       if(array[i] == toCheck) return true;
     }
     return(false);
